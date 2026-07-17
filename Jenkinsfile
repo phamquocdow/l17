@@ -9,6 +9,16 @@ pipeline {
     stages {
 
         // ============================================================
+        // STAGE DÙNG CHUNG CHO MỌI NHÁNH (tuỳ chọn)
+        // ============================================================
+        stage('Checkout') {
+            steps {
+                echo "Đang checkout branch: ${env.BRANCH_NAME}"
+                checkout scm
+            }
+        }
+
+        // ============================================================
         // 1. NHÁNH feature/* -> Unit Test + Lint
         // ============================================================
         stage('Unit Test') {
